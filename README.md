@@ -1,8 +1,8 @@
 # **BBC news headline scraper**
 
-Simple backend for an App that scrapes headlines, summaries and dates daily.
-It will print the updates as retrieved and add them to a csv. Furhter development
-could be to build an API, add a GUI, and to make the file an executable. 
+Simple backend scrape of sky headlines, date and trend status.
+It will print the updates as retrieved and add them to a csv. Example of a potential
+scrape to support an API.
 
 # Preparation
 
