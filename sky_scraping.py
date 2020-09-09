@@ -1,5 +1,6 @@
 # Sky News daily web scraper
 # Author Sean Hoyal, 2020
+# Ver 2.0
 #
 # Get the headlines in time for coffee!
 #
@@ -7,8 +8,6 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 from datetime import datetime
-import schedule
-import time
 
 # Function to scrape
 def scrape():
@@ -66,13 +65,3 @@ def scrape():
 
 	f.close()
 
-# Schedule scrape to occur daily @ 7am
-schedule.every().day.at("07:00").do(scrape)
-
-while True:
-	schedule.run_pending()
-	time.sleep(0.5)
-
-# Scrape!
-if __name__ == '__main__':
-	scrape()
