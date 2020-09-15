@@ -1,3 +1,8 @@
-urllib import urlopen as uReq
 bs4
 schedule
+Flask
+flask
+cassandra-driver
+bs4
+requests
+apscheduler

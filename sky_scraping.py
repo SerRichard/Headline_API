@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup as soup
 from datetime import datetime
 from csv import DictReader, DictWriter, reader, writer
 from itertools import islice
-import pandas as pd
 import subprocess
 import uuid
 import csv
@@ -155,7 +154,7 @@ class Scraper:
 
 	@classmethod
 	def migrateCass(self):
-		comm1 = "sudo docker cp modified_articles.csv news-dock:/home/modified_articles.csv"
+		comm1 = "kubectl cp modified_articles.csv default/cassandra-0:/home/modified_articles.csv"
 
 		normal = subprocess.run(comm1,
 			stdout = subprocess.PIPE, stderr = subprocess.PIPE,
@@ -163,4 +162,4 @@ class Scraper:
 			text = True,
 			shell = True)
 		print(normal.stdout)
-		print("Complete!")
+		print("Moved to cassandra!")

@@ -17,11 +17,17 @@ import json
 import time
 
 # Initialize cluster connection
-cluster = Cluster(contact_points=['172.17.0.2'],port=9042)
-session = cluster.connect()
+cluster = Cluster(contact_points=['192.168.99.107'],port=30036)
+session = cluster.connect(wait_for_all_pools=True)
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
+# Local Job
+def cassCopy():
+    session.execute("""COPY news.daily (uid, title, date, trending, brexit, covid) FROM '/home/modified_articles.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+""")
+    return("New files moved into news.daily")
 
 # Instantiate Scraper & Schedule jobs
 scrap1 = Scraper
@@ -31,6 +37,7 @@ sched.add_job(scrap1.reset,'interval',hours=23,minutes=59)
 sched.add_job(scrap1.scrape,'interval',hours=23,minutes=59,seconds=5)
 sched.add_job(scrap1.addBinary,'interval',hours=23,minutes=59,seconds=10)
 sched.add_job(scrap1.migrateCass,'interval',hours=23,minutes=59,seconds=15)
+sched.add_job(cassCopy(), interval,hours=23,minutes=59,seconds=20)
 sched.start()
 
 # API Routes

@@ -9,4 +9,4 @@ spec:
     app: cassandra
   ports:
     - port: 9042
-      nodePort: 30007
+      nodePort: 300036
