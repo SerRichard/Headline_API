@@ -76,3 +76,39 @@ Now you can run the API!
 ```
 sudo python3 sky_api.py
 ```
+
+## Interact with API
+
+/
+```
+curl -i 0.0.0.0:80/                                           
+```
+Returns welcome statement
+
+/articles
+```
+curl -i 0.0.0.0:80/articles                                              
+```
+Returns all current articles held in the API
+
+/today
+```
+curl -i 0.0.0.0:80/today                                             
+```
+Returns all articles with todays date
+
+/brexit
+```
+curl -i 0.0.0.0:80/brexit
+```
+Returns all articles relevant to brexit
+
+/covid
+```
+curl -i 0.0.0.0:80/covid
+```
+Returns all articles relevant to covid
+
+## Future Updates
+
+Intended updates to this API will be the addition of the links to each articles.
